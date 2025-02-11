@@ -17,12 +17,14 @@ class LibrarySystem:
         self.current_user = None  # 当前登录用户
         self.load_data()
 
-    def add_book(self, book):
+    def add_book(self, isbn, title, author, total_copies):
         """添加新书"""
-        if book.isbn in self.books:
+        if isbn in self.books:
             print("错误：ISBN已存在！")
             return False
-        self.books[book.isbn] = book
+        new_book = Book(isbn, title, author, total_copies)
+        self.books[isbn] = new_book
+        print("图书添加成功！")
         return True
 
     def search_book(self, keyword):
@@ -34,6 +36,46 @@ class LibrarySystem:
                 keyword == isbn):
                 results.append(book)
         return results
+    
+    def delete_book(self, isbn):
+        """删除图书"""
+        if isbn not in self.books:
+            print("错误：图书不存在！")
+            return False
+        del self.books[isbn]
+        print("图书删除成功！")
+        return True
+
+    def edit_book(self, old_isbn, new_isbn=None, title=None, author=None, total_copies=None):
+        """修改图书"""
+        if old_isbn not in self.books:
+            print("错误：图书不存在！")
+            return False
+        book = self.books[old_isbn]
+        if new_isbn and new_isbn != old_isbn:
+            if new_isbn in self.books:
+                print("错误：新的 ISBN 已存在！")
+                return False
+            self.books[new_isbn] = book
+            del self.books[old_isbn]
+            book.isbn = new_isbn
+        if title:
+            book.title = title
+        if author:
+            book.author = author
+        if total_copies is not None:
+            book.total_copies = total_copies
+            book.available_copies = total_copies - len([r for r in book.borrow_records if not r["return_date"]])
+        print("图书修改成功！")
+        return True
+
+    def list_books(self):
+        """查看全部图书"""
+        if not self.books:
+            print("当前没有图书。")
+            return
+        for isbn, book in self.books.items():
+            print(f"ISBN: {isbn}, 书名: {book.title}, 作者: {book.author}, 总数量: {book.total_copies}, 可借数量: {book.available_copies}")
 
     def borrow_book(self, isbn):
         """借阅图书（关联用户）"""

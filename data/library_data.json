@@ -1,8 +1,52 @@
 {
+  "1002": {
+    "isbn": "1002",
+    "title": "\u56f4\u6210",
+    "author": "\u94b1\u949f\u4e66",
+    "total_copies": 100,
+    "available_copies": 100,
+    "borrow_records": [
+      {
+        "user": "admin",
+        "borrow_date": "2025-02-11T15:10:38.355665",
+        "return_date": "2025-02-11T15:10:53.491262"
+      }
+    ]
+  },
+  "1003": {
+    "isbn": "1003",
+    "title": "\u8bba\u8bed",
+    "author": "\u5b54\u5b50",
+    "total_copies": 1,
+    "available_copies": 0,
+    "borrow_records": [
+      {
+        "user": "admin",
+        "borrow_date": "2025-02-11T15:12:51.446148",
+        "return_date": null
+      }
+    ]
+  },
+  "1004": {
+    "isbn": "1004",
+    "title": "\u7ea2\u697c\u68a6",
+    "author": "\u66f9\u96ea\u82b9",
+    "total_copies": 100,
+    "available_copies": 100,
+    "borrow_records": []
+  },
+  "1005": {
+    "isbn": "1005",
+    "title": "\u6c34\u6d52\u4f20",
+    "author": "\u5434\u627f\u6069",
+    "total_copies": 100,
+    "available_copies": 100,
+    "borrow_records": []
+  },
   "1001": {
     "isbn": "1001",
-    "title": "12",
-    "author": "1",
+    "title": "\u4e09\u4f53",
+    "author": "\u5218\u6148\u6b23",
     "total_copies": 100,
     "available_copies": 98,
     "borrow_records": [
@@ -19,34 +63,6 @@
       {
         "user": "lin",
         "borrow_date": "2025-02-11T15:12:06.451349",
-        "return_date": null
-      }
-    ]
-  },
-  "1002": {
-    "isbn": "1002",
-    "title": "1002",
-    "author": "110",
-    "total_copies": 100,
-    "available_copies": 100,
-    "borrow_records": [
-      {
-        "user": "admin",
-        "borrow_date": "2025-02-11T15:10:38.355665",
-        "return_date": "2025-02-11T15:10:53.491262"
-      }
-    ]
-  },
-  "1003": {
-    "isbn": "1003",
-    "title": "xiyouji",
-    "author": "12",
-    "total_copies": 1,
-    "available_copies": 0,
-    "borrow_records": [
-      {
-        "user": "admin",
-        "borrow_date": "2025-02-11T15:12:51.446148",
         "return_date": null
       }
     ]

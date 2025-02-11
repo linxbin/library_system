@@ -36,9 +36,19 @@ class MenuManager:
             "admin_main": {
                 "title": "\n=== 管理员面板 ===",
                 "options": [
-                    ("1", "添加图书", "add_book"),
+                    ("1", "图书管理", "book_mgmt"),
                     ("2", "用户管理", "user_mgmt"),
                     ("0", "返回主菜单", "back")
+                ]
+            },
+            "book_management": {
+                "title": "\n=== 图书管理 ===",
+                "options": [
+                    ("1", "添加图书", "add_book"),
+                    ("2", "删除图书", "delete_book"),
+                    ("3", "修改图书", "edit_book"),
+                    ("4", "查看图书", "list_books"),
+                    ("0", "返回上级", "back")
                 ]
             },
             "user_management": {

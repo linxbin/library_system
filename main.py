@@ -52,6 +52,9 @@ def main():
 
             elif action == "user_mgmt":
                 menu.menu_stack.append("user_management")
+
+            elif action == "book_mgmt":
+                menu.menu_stack.append("book_management")
             
             elif action == "admin_menu":
                 menu.menu_stack.append("admin_main")
@@ -59,6 +62,12 @@ def main():
             elif action == "back":
                 if len(menu.menu_stack) > 1:
                     menu.menu_stack.pop()
+
+            elif current_menu == "admin_main":
+                if action == "book_mgmt":
+                    menu.menu_stack.append("book_management")
+                elif action == "user_mgmt":
+                    menu.menu_stack.append("user_management")
 
             # 用户管理子菜单处理
             elif current_menu == "user_management":
@@ -75,16 +84,30 @@ def main():
                         print("密码已重置")
                         system.save_data()
             
-            # 管理员主菜单处理
-            elif current_menu == "admin_main":
+            # 管理员子菜单处理
+            elif current_menu == "book_management":
                 if action == "add_book":
-                    isbn = input("ISBN: ")
-                    title = input("书名: ")
-                    author = input("作者: ")
-                    total_copies = int(input("总数量: "))
-                    new_book = Book(isbn, title, author, total_copies)
-                    system.add_book(new_book)
+                    isbn = input("请输入ISBN: ")
+                    title = input("请输入书名: ")
+                    author = input("请输入作者: ")
+                    total_copies = int(input("请输入总数量: "))
+                    system.add_book(isbn, title, author, total_copies)
                     system.save_data()
+                elif action == "delete_book":
+                    isbn = input("请输入ISBN: ")
+                    system.delete_book(isbn)
+                    system.save_data()
+                elif action == "edit_book":
+                    old_isbn = input("请输入当前的ISBN: ")
+                    new_isbn = input("请输入新的ISBN（留空则不修改）: ")
+                    title = input("请输入新的书名（留空则不修改）: ")
+                    author = input("请输入新的作者（留空则不修改）: ")
+                    total_copies = input("请输入新的总数量（留空则不修改）: ")
+                    total_copies = int(total_copies) if total_copies else None
+                    system.edit_book(old_isbn, new_isbn, title, author, total_copies)
+                    system.save_data()
+                elif action == "list_books":
+                    system.list_books()
 
             # 普通用户菜单处理
             elif current_menu == "user_main":
